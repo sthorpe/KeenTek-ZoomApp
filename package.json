@@ -1,0 +1,25 @@
+{
+  "name": "keentek-zoomapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sthorpe/KeenTek-ZoomApp.git"
+  },
+  "author": "Scott Thorpe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sthorpe/KeenTek-ZoomApp/issues"
+  },
+  "homepage": "https://github.com/sthorpe/KeenTek-ZoomApp#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  }
+}
