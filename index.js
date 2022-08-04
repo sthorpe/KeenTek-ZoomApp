@@ -10,7 +10,7 @@ const payload = {
 };
 const token = jwt.sign(payload, config.APISecret);
 
-function getZoomRooms(){
+function getAllZoomRooms(){
   var options = {
     method: 'GET',
     url: `https://api.zoom.us/v2/rooms`,
@@ -31,32 +31,35 @@ function getZoomRooms(){
     if (error) throw new Error(error);
 
     console.log(body);
+    getZoomRoomDevices(body.rooms);
+    console.log('--------------------------------------------');
   });
 }
 
-function getZoomRoomDevices(){
-  var options = {
-    method: 'GET',
-    url: `https://api.zoom.us/v2/rooms/ImiKN5OuSn-41hV7D-ajag/devices`,
-    qs: {
-      status: 'active'
-    },
-    auth: {
-      'bearer': token
-    },
-    headers: {
-      'User-Agent': 'Zoom-api-Jwt-Request',
-      'content-type': 'application/json'
-    },
-    json: true //Parse the JSON string in the response
-  };
+function getZoomRoomDevices(rooms){
+  rooms.map((room) => {
+    var options = {
+      method: 'GET',
+      url: `https://api.zoom.us/v2/rooms/${room.id}/devices`,
+      qs: {
+        status: 'active'
+      },
+      auth: {
+        'bearer': token
+      },
+      headers: {
+        'User-Agent': 'Zoom-api-Jwt-Request',
+        'content-type': 'application/json'
+      },
+      json: true //Parse the JSON string in the response
+    };
 
-  request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
 
-    console.log(body);
-  });
+      console.log(body);
+    });
+  })
 }
 
-getZoomRoomDevices();
-getZoomRooms();
+getAllZoomRooms();
