@@ -30,9 +30,8 @@ function getAllZoomRooms(){
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
-    console.log(body);
+    console.log(`We found ${body.rooms.length} Zoom Rooms`);
     getZoomRoomDevices(body.rooms);
-    console.log('--------------------------------------------');
   });
 }
 
@@ -57,7 +56,8 @@ function getZoomRoomDevices(rooms){
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
 
-      console.log(body);
+      // console.log(body);
+      console.log(`Zoom Room ${room.name} has ${body.devices.length} devices`);
     });
   })
 }
