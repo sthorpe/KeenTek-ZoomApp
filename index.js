@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const creds = process.env.ZOOMAPIKEY+':'+process.env.ZOOMAPISECRET;
 
 
-// https://zoom.us/oauth/authorize?response_type=code&client_id=Pk2Yk1qMTWGjl48O3fwhZg&redirect_uri=https://yourapp.example.com
-
 function getAccessToken(){
   var options = {
     method: 'POST',
