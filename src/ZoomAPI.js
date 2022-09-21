@@ -56,8 +56,8 @@ function getZoomRoomDevices(rooms){
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
 
-      // console.log(body);
-      console.log(`Zoom Room ${room.name} has ${body.devices.length} devices`);
+      console.log(body);
+      //console.log(`Zoom Room ${room.name} has ${body.devices.length} devices`);
     });
   })
 }
